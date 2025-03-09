@@ -1,0 +1,21 @@
+[project]
+name = "trade-bot"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "binance-connector>=3.12.0",
+    "binance-futures-connector>=4.1.0",
+    "fastapi>=0.115.8",
+    "httpx>=0.28.1",
+    "pandas>=2.2.3",
+    "passlib[bcrypt]>=1.7.4",
+    "pyjwt>=2.10.1",
+    "uvicorn>=0.34.0",
+    "websockets>=15.0",
+]
+
+[dependency-groups]
+dev = ["pytest>=8.3.4"]
+
