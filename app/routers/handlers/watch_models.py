@@ -18,7 +18,7 @@ class SymbolRow(BaseModel):
     bidPriceB: Decimal
     askPriceB: Decimal
 
-    # 差价
+    # 开仓差价
     diffAb: Decimal | None = None  # A -> B
     diffBa: Decimal | None = None  # B -> A
 
@@ -31,7 +31,7 @@ class SymbolRow(BaseModel):
 
     timestamp: int
 
-    # 盘差 
+    # 盘差 (越小, 深度越好, 流动性越好)
     pc: Decimal | None = None
 
     # ---------------- 合约 -----------------

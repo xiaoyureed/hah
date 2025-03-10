@@ -169,7 +169,7 @@ class WatchHandler:
         if not val:
             return Decimal("0")
 
-        return val.quantize(Decimal("0.000001"), rounding=ROUND_HALF_UP).normalize()
+        return val.quantize(Decimal("0.0001"), rounding=ROUND_HALF_UP).normalize()
 
     def calc_direction(self, row: SymbolRow):
         # calc the direction
@@ -216,7 +216,7 @@ class WatchHandler:
             and row.diffBa
             and row.direction != "equal"
         ):
-            row.pc = (
+            row.pc = self._adjust_precision(
                 abs(
                     (
                         row.qccj
@@ -229,7 +229,7 @@ class WatchHandler:
                     / row.qccj
                 )
                 * 100
-            ).to_integral_value(ROUND_HALF_UP)
+            )
 
     def handle_mark_price(self, symbols: Optional[list[str]]):
         prices: list[MarkPrice] = []
