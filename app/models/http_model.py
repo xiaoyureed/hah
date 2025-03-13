@@ -1,4 +1,5 @@
 from typing import Any
+
 from pydantic import BaseModel
 
 
@@ -10,7 +11,7 @@ class Resp(BaseModel):
     @staticmethod
     def ok(data: dict[str, Any] | list[Any] | None = None):
         return Resp(code=0, message="", data=data)
-    
+
     @staticmethod
     def failed(err: str):
         return Resp(code=1, message=err, data=None)

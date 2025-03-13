@@ -1,15 +1,18 @@
-from app.utils.log_util import init_app_log
+debugMode = True
 
 
-def main():
+def main() -> int:
     import uvicorn
 
-    init_app_log(True)
+    host = "0.0.0.0"
+    port = 8387
+    print(f"Starting server at http://{host}:{port}")
 
-    uvicorn.run("app:app", host="0.0.0.0", port=8387, reload=True)
+    uvicorn.run("app:fast_app", host=host, port=port, reload=debugMode, log_config=None)
 
-    pass
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    import sys
+    sys.exit(main())
