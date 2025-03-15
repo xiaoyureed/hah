@@ -13,6 +13,7 @@ dependencies = [
     "objprint>=0.3.0",
     "pandas>=2.2.3",
     "passlib[bcrypt]>=1.7.4",
+    "pybit>=5.10.0",
     "pyjwt>=2.10.1",
     "python-okx>=0.3.5",
     "uvicorn>=0.34.0",

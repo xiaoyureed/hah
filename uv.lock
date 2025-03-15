@@ -719,6 +719,17 @@ wheels = [
 ]
 
 [[package]]
+name = "pybit"
+version = "5.10.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "pycryptodome" },
+    { name = "requests" },
+    { name = "websocket-client" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/a4/73/8a27e953ebb61a869ef43923761b0584aaa7f19da6e7ac38d0fabc88b11f/pybit-5.10.0.tar.gz", hash = "sha256:48255ff1e97eaa7ffd46199d5d5ac07c125150017e34963dc9ac50d19e4eb5a6", size = 46749 }
+
+[[package]]
 name = "pycparser"
 version = "2.22"
 source = { registry = "https://pypi.org/simple" }
@@ -1044,6 +1055,7 @@ dependencies = [
     { name = "objprint" },
     { name = "pandas" },
     { name = "passlib", extra = ["bcrypt"] },
+    { name = "pybit" },
     { name = "pyjwt" },
     { name = "python-okx" },
     { name = "uvicorn" },
@@ -1065,6 +1077,7 @@ requires-dist = [
     { name = "objprint", specifier = ">=0.3.0" },
     { name = "pandas", specifier = ">=2.2.3" },
     { name = "passlib", extras = ["bcrypt"], specifier = ">=1.7.4" },
+    { name = "pybit", specifier = ">=5.10.0" },
     { name = "pyjwt", specifier = ">=2.10.1" },
     { name = "python-okx", specifier = ">=0.3.5" },
     { name = "uvicorn", specifier = ">=0.34.0" },

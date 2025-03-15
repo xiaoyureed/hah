@@ -1,5 +1,5 @@
-
 from app.routers.handlers.binance import BinanceWatchHandler
+from app.routers.handlers.bybit import BybitWatchHandler
 from app.routers.handlers.okx import OkxWatchHandler
 
 # @dataclass
@@ -21,6 +21,11 @@ datasource = {
     "exchanges": [
         {"id": "binance", "label": "币安", "handler": BinanceWatchHandler},
         {"id": "okx", "label": "欧易", "handler": OkxWatchHandler},
+        {
+            "id": "bybit",
+            "label": "Bybit",
+            "handler": BybitWatchHandler,
+        },
     ],
     "markets": [
         {

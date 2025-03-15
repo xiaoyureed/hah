@@ -7,34 +7,10 @@ from pydantic import BaseModel, computed_field
 
 from app.errors import biz_error
 
+# -------------------------------------------- models for our watching api
+
+# (symbol, market_name, bid, ask, timestamp)
 BasicPrice: TypeAlias = tuple[str, str, Decimal, Decimal, int]
-
-
-T = TypeVar("T")
-
-
-class RespWrapper(BaseModel, Generic[T]):
-    code: str
-    msg: str
-    data: list[T]
-
-
-class Ticker(BaseModel):
-    # LTC-USD-SWAP
-    instId: str
-    # 卖 1
-    askPx: str
-    bidPx: str
-    # ms
-    ts: str
-
-    @computed_field
-    def symbol(self) -> str:
-        # instId = self.instId
-        # if instId and instId.strip():
-        #     return instId.rsplit("-", 1)[0]
-        # return ""
-        return self.instId
 
 
 class SymbolRow(BaseModel):
@@ -99,6 +75,66 @@ class TradeDirection(Enum):
     B_A = "A卖B买"
 
 
+
+class BookOptions(BaseModel):
+    """盘口-可选项"""
+
+    id: str
+    label: str
+
+# ----------------------------------------------------------------- bybit models
+
+class BybitTicker(BaseModel):
+    ask1Price: Decimal
+    bid1Price: Decimal
+    symbol: str
+    
+
+class BybitResult(BaseModel):
+    category: str
+    list: list[BybitTicker]
+
+
+
+class BybitRespWrapper(BaseModel):
+    retCode: int
+    retExtInfo: dict
+    retMsg: str
+    time: int
+    result: BybitResult
+
+# ------------------------------------------------------------------  okx models
+
+
+T = TypeVar("T")
+
+
+class RespWrapper(BaseModel, Generic[T]):
+    code: str
+    msg: str
+    data: list[T]
+
+
+class Ticker(BaseModel):
+    # LTC-USD-SWAP
+    instId: str
+    # 卖 1
+    askPx: str
+    bidPx: str
+    # ms
+    ts: str
+
+    @computed_field
+    def symbol(self) -> str:
+        # instId = self.instId
+        # if instId and instId.strip():
+        #     return instId.rsplit("-", 1)[0]
+        # return ""
+        return self.instId
+
+
+# --------------------------------------------- binance model
+
 class MarkPrice(BaseModel):
     symbol: str
     # 标记价格
@@ -111,11 +147,8 @@ class MarkPrice(BaseModel):
     time: int
 
 
-class BookOptions(BaseModel):
-    """盘口-可选项"""
 
-    id: str
-    label: str
+# ----------------------------------------------------------  todo
 
 
 @add_objprint

@@ -1,6 +1,12 @@
-# def parse_arr(self, symbols: str | None, sep: str):
-#     if not symbols or not symbols.strip():
-#         return None
+# from decimal import Decimal
 
-#     if sep == ",":
-#         return [s.strip().upper() for s in symbols.split(",")]
+# from app.utils.log_util import Lg
+
+
+# def to_decimal(target: str):
+#     res = None
+#     try:
+#         res = Decimal(target)
+#     except Exception as ex:
+#         Lg.error(f"to_decimal error: {ex}")
+        

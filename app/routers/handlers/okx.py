@@ -71,4 +71,4 @@ class OkxWatchHandler(IWatchHandler):
         return self._get_prices("SWAP")
 
     def get_mark_price(self) -> list[MarkPrice]:
-        return None
+        return []
